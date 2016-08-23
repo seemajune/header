@@ -1,0 +1,351 @@
+﻿/*/@import (reference) "../../../modules/lib/bootstrap/less/variables.less";
+@import (reference) "../../../modules/lib/bootstrap/less/mixins.less";
+@import (reference) "../../../modules/lib/bootstrap/less/grid.less";
+@import (reference) "../../common/styles/site-variables.less";*/
+
+/* Colors */
+@color-contrast-header-bg: #1d2172;
+@color-contrast-main-nav-highlight-color: #96b711;
+@brand-color: #00a5d9;
+
+/* Layout sizing */
+@container-width: 1040px;
+@header-height: 40px;
+@footer-height: 122px;
+
+/* Sprites */
+@video-sprite-img: url('/images/video-sprite.png');
+
+
+/* Top navigation bar bootstrap override begin */
+.header-nav {
+	.clearfix();
+	position: relative;
+}
+
+
+#navbar-top.navbar-inverse {
+	@media only screen and (min-width:@screen-md-min) {
+		height: @header-height;
+
+		.navbar-nav > li {
+			float: left;
+		}
+	}
+}
+
+.navbar {
+	border: 0 none;
+	border-radius: 0;
+}
+
+.navbar-collapse {
+	@media screen and (max-width:@screen-sm-max) {
+		.box-shadow(none);
+		border: none;
+		margin-top: 10px;
+
+		
+	}
+}
+
+
+.navbar-inverse .navbar-collapse .navbar-nav > li > a {
+	&.active {
+		@media screen and (max-width:@screen-xs-max) {
+			padding-top: 20px;
+			padding-bottom: 10px;
+		}
+		&:hover, &:focus {
+			color: @color-contrast-header-bg;
+		}
+	}
+}
+
+.navbar-header button.navbar-toggle.collapsed {
+	@media screen and (max-width:@screen-sm-max) {
+		margin: 5px 15px 0 0;
+	}
+}
+
+
+.nav-container {
+	@media screen and (min-width:@screen-md-min) {
+		.container();
+	}
+}
+
+.navbar-nav {
+	margin: 0;
+
+	&.navbar-right:last-child {
+		margin-right: 0;
+	}
+}
+
+.navbar-brand {
+	padding: 0;
+	margin: 0 60px 0 26px;
+
+	@responsive-logo-height: 42px;
+
+	@media screen and (max-width:@screen-sm-max) {
+		height: @responsive-logo-height;
+	}
+
+	.logo {
+		display: block;
+		height: 58px;
+		width: 66px;
+		background: url('/images/logos/kaplan.png') no-repeat;
+		text-indent: -1000px;
+		overflow: hidden;
+
+		@media screen and (max-width:@screen-sm-max) {
+			height: @responsive-logo-height;
+			background: url('/images/logos/klogo-xs-sm.svg') no-repeat;
+			background-position: 20px;
+		}
+	}
+}
+.navbar-inverse {
+	min-height: @header-height;
+	background-color: @color-contrast-header-bg;
+
+
+	.navbar-nav li.collapse-menu-item-only {
+		@media only screen and (min-width:@screen-sm-min) {
+			display: none;
+		}
+	}
+
+	ul.navbar-nav {
+		@media only screen and (max-width:@screen-sm-max) {
+			margin-top: -10px;
+		}
+	}
+
+	.navbar-nav > li > a {
+		text-transform: uppercase;
+		color: #fff;
+		outline: none;
+		.transition(background-color 0.5s ease);
+
+		&.active,
+		&:hover,
+		&:focus {
+			color: @color-contrast-main-nav-highlight-color;
+		}
+
+		&.active {
+			cursor: default;
+			text-shadow: 0 1px 0 rgba(255,255,255,.68);
+			color: @color-contrast-header-bg;
+			border-bottom: 3px solid @color-contrast-main-nav-highlight-color;
+			background-image: linear-gradient(-180deg,#fff 0%,#eae7e7 100%);
+
+			@media only screen and (min-width:@screen-md-min) {
+				padding-bottom: 7px;
+			}
+		}
+
+		@media only screen and (min-width:@screen-md-min) {
+			padding: 10px 15px;
+
+			&.dropdown-toggle {
+				padding: 5px 0 0 0;
+			}
+		}
+
+		@media only screen and (max-width:@screen-sm-max) {
+			line-height: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+
+	.navbar-toggle {
+		border: none;
+		background-color: transparent;
+
+		&:hover, &:focus {
+			background-color: transparent;
+		}
+	}
+}
+
+/* Top navigation bar bootstrap override end */
+
+
+
+/* My Account Dropdown Bootstrap override begin */
+.navbar-myaccount {
+	position: absolute;
+	right: 5px;
+	z-index: 55;
+	top: 7px;
+
+	@media only screen and (max-width:@screen-xs-max) {
+		display: none;
+	}
+
+	& > .open > a {
+		background-color: transparent !important;
+
+		& > .glyphicon, .navbar-myaccount > .open > a > .caret {
+			color: #ffffff;
+		}
+	}
+
+	.dropdown-toggle {
+		padding: 3px 0;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: transparent !important;
+
+			& > .glyphicon {
+				color: #ffffff;
+			}
+
+			& > .caret {
+				border-top-color: #ffffff !important;
+				border-bottom-color: #ffffff !important;
+			}
+		}
+
+		& > .caret {
+			margin-top: -2px;
+			border-top-color: #fff !important;
+			border-bottom-color: #fff !important;
+		}
+
+		& > .glyphicon-cog {
+			color: #fff;
+			margin-right: 5px;
+			margin-top: -4px;
+			vertical-align: middle;
+			content: "";
+			font-size: 15px;
+		}
+	}
+
+	.dropdown-menu-myaccount {
+		top: 122%;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		right: 0;
+		left: auto;
+		padding: 0;
+		border-radius: 0;
+
+		& > li {
+			padding: 2px;
+			background-color: @brand-color;
+
+			&:first-child > a:after {
+				content: "";
+				position: absolute;
+				left: 170px;
+				top: -8px;
+				width: 0;
+				height: 0;
+				border-left: 8px solid transparent;
+				border-right: 8px solid transparent;
+				border-bottom: 8px solid @brand-color;
+			}
+
+			& > a {
+				display: block;
+				color: #1d2172;
+				padding: 10px 20px;
+				background-color: @brand-color;
+				text-transform: uppercase;
+
+				&:hover, &:focus {
+					color: #0299D4;
+					background-color: #ffffff;
+				}
+
+				& > .glyphicon {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+}
+
+
+.navbar.navbar-inverse.breadcrumb-bar {
+	margin-top: -20px;
+	background-color: @brand-color;
+	height: 45px;
+
+	@media only screen and (min-width:@screen-md-min) {
+		display: none;
+	}
+
+	.navbar-btn {
+		@media only screen and (max-width:@screen-sm-max) {
+			margin: 5px 0;
+			margin-top: 8px;
+		}
+	}
+
+	.navbar-text.breadcrumb-title {
+		text-align: center;
+		margin-right: 35px;
+		text-transform: uppercase;
+		color: #FFF;
+		width: 100%;
+
+		@media only screen and (max-width:@screen-sm-max) {
+			margin: 11px 0;
+		}
+
+		@media only screen and (max-width:@screen-xs-max) {
+			letter-spacing: -1px;
+		}
+	}
+
+	#left-menu-toggle {
+		height: 30px;
+		background: #FFF;
+		position: absolute;
+		top: 0;
+		left: 0;
+		-moz-border-radius: 0 5px 5px 0;
+		-webkit-border-radius: 0 5px 5px 0;
+		border-radius: 0 5px 5px 0;
+		margin-left: 25px;
+		margin-right: 10px;
+		padding-top: 5px;
+		padding-left: 5px;
+		padding-right: 10px;
+
+		/*@media only screen and (max-width:@screen-xs-max) {
+			margin-left: 12px;
+		}*/
+
+		&:active {
+			box-shadow: none;
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			right: 100%;
+			width: 0;
+			height: 0px;
+			top: -1px;
+			border-top: 14px solid transparent;
+			border-right: 12px solid #FFF;
+			border-bottom: 16px solid transparent;
+		}
+	}
+}

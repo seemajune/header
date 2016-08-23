@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="styles/navigation.less" type="text/css" >
+        <script src="cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>    
+    </head>
+
+ <!-- @using System.Web.Mvc.Html -->
+ <!-- @using Atom.Web.Mvc -->
+
+<nav class="navbar navbar-inverse" role="navigation" id="navbar-top">
+    <h2 class="hidden-outline-text" aria-hidden="true">Main Navigation</h2>
+    <div class="nav-container">
+        <div class="header-nav" role="menubar">
+            <div class="navbar-header" role="menu">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#courseware-nav" aria-expanded="false" aria-controls="navbar"
+                        aria-labelledby="collapse-menu-label">
+                    <span class="sr-only" id="collapse-menu-label">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <!-- @Html.Partial(MVC.Shared.Views._LogoPartial)-->
+            </div>
+            <div id="courseware-nav" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                   <!--   @if (Model != null)
+                    {
+                    foreach (var pageSection in Model.ProductConfiguration.sections)
+                    {
+                    var currentController = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue;
+                    var currentPage = string.Empty;
+
+                    if (currentController != null)
+                    {
+                    currentPage = currentController.ToString().ToLower();
+                    }
+                    if (currentPage == pageSection.id.ToString())
+                    { -->
+                    <li role="presentation" <!-- ng-class="{{'doogie-top-nav-@Html.Raw(pageSection.title)' | slugify}}" --> aria-selected="true">
+                        <a href="" class="active" target="_self"><span><!--@Html.Raw(pageSection.title)--></span></a>
+                    </li>
+                    }
+                    else
+                    {
+                    <li role="presentation" <!-- ng-class="{{'doogie-top-nav-@Html.Raw(pageSection.title)' | slugify}}"--> >
+                        <a <!--href="@(pageSection.url!=null ? @pageSection.url : String.Concat("/", pageSection.id))" target="@(pageSection.isabsolute != null && pageSection.isabsolute == "true" ? "_blank" : "_self")"-->><span track-site-nav-click> <!--@Html.Raw(pageSection.title)--></span></a>
+                    </li>
+                    }
+                    }
+                    }
+                    <li class="collapse-menu-item-only" role="presentation"><a <!--href="@ViewPaths.Routes.AccountSettings"--> target="_self" track-site-nav-click>Account Settings</a></li>
+                    <li class="collapse-menu-item-only" role="presentation"><a href="/logout" target="_self" track-site-nav-click>Sign out</a></li>
+                </ul>
+                <!--@Html.Partial(ViewPaths.Shared.Views._TopNavSettingsMenu)-->
+            </div>
+        </div>
+    </div>
+   <!--<cookie-override-message message="You are using non-default <a href='/env' target='_self'>environment integrations</a>"></cookie-override-message>--> 
+</nav>
+
+   
+</html>
